@@ -7,13 +7,20 @@ import path from 'path';
 const router = express.Router();
 
 // Set up multer for handling image uploads
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'uploads/');
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + path.extname(file.originalname)); // Append the file's extension to ensure unique filenames
+//   },
+// });
+
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Append the file's extension to ensure unique filenames
-  },
+  destination: './uploads/',
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
 });
 
 // Multer middleware for handling multiple file uploads (max 6 files)
