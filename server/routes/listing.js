@@ -26,7 +26,7 @@ const storage = multer.diskStorage({
 // Multer middleware for handling multiple file uploads (max 6 files)
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // Limit file size to 5MB
+  limits: { fileSize: 15 * 1024 * 1024 }, // Limit file size to 5MB
   fileFilter: (req, file, cb) => {
     // Only accept image files (png, jpg, jpeg)
     const allowedTypes = /jpeg|jpg|png/;
